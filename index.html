@@ -3,9 +3,10 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
+        <meta name="description" content="Software Solution Factory fue fundada en Guayaquil en 2018, para promover la innovación a las pequeñas y grandes empresas, además de trabajar con las mejores tecnologías, herramientas y metodologías.">
+		<meta name="keywords" content="software, software ecuador, tecnología, innovación, desarrollo, sistemas, sistemas guayaquil, software guayaquil, software machala, sistemas machala">
         <meta name="author" content="" />
-        <title>Agency - Start Bootstrap Theme</title>
+        <title>Software Solution Factory</title>
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
@@ -14,14 +15,10 @@
         <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <link href="css/styles.css" rel="stylesheet" crossorigin="anonymous"/>
         <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap" rel="stylesheet">
 		<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-		<script>
-			function onSubmit(token) {
-				document.getElementById("contactForm").submit();
-			}
-		</script>
+		<!-- Chat Crisp -->
 		<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="0255d800-fd1b-4034-b5d1-e6bc6ad64571";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
 		<meta name="description" content="Soluciones de trade marketing y retail execution, conecta tu operación de punta a punta.">
     </head>
@@ -248,17 +245,17 @@
             </div>
         </section>
         <!-- Clients-->
-        <div class="py-5" hidden>
+        <div class="py-5">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/envato.jpg" alt="" /></a>
+                        <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/logo_mundi.png" alt="MundiConstrucciones" style="width: 3rem;"/></a>
                     </div>
                     <div class="col-md-3 col-sm-6 my-3">
                         <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/designmodo.jpg" alt="" /></a>
                     </div>
                     <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/themeforest.jpg" alt="" /></a>
+                        <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/logo_he_and_she.jpeg" alt="He and She" style="width: 3rem;"/></a>
                     </div>
                     <div class="col-md-3 col-sm-6 my-3">
                         <a href="#!"><img class="img-fluid d-block mx-auto" src="assets/img/logos/creative-market.jpg" alt="" /></a>
@@ -267,7 +264,7 @@
             </div>
         </div>
         <!-- Contact-->
-        <section class="page-section" id="contact" hidden>
+        <section class="page-section" id="contact">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Contáctanos</h2>
@@ -296,9 +293,12 @@
                             </div>
                         </div>
                     </div>
+					<div class="text-center pb-3">
+						<div class="g-recaptcha"></div>
+					</div>
                     <div class="text-center">
                         <div id="success"></div>
-                        <button class="btn btn-primary btn-xl text-uppercase g-recaptcha" id="sendMessageButton" type="submit" data-sitekey="6LdWqrcZAAAAAGSCI7GrruT8U8XIQNkPRa1sOrbW" data-callback='onSubmit'>Enviar Mensaje</button>
+                        <button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">Enviar Mensaje</button>
                     </div>
                 </form>
             </div>
@@ -414,5 +414,27 @@
         <script src="assets/mail/contact_me.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+		<script type="text/javascript">
+			var responseCaptcha = null;
+			var verifyCallback = function(response) {
+				responseCaptcha = response;
+				setTimeout(function(){ grecaptcha.reset(); responseCaptcha = null; }, 75000);
+			};
+
+			var onloadCallback = function() {
+				grecaptcha.render('g-recaptcha', {
+					'sitekey' : '6LdWqrcZAAAAAGSCI7GrruT8U8XIQNkPRa1sOrbW',
+					'callback' : verifyCallback,
+				});
+			};
+			$('button[id="sendMessageButton"]').on('click', function(e){
+				e.preventDefault();
+				if (responseCaptcha == null){
+					apiModal.mensajeModal("Por favor, verifique que no es un robot.","",false); return false;
+				}
+				$('#sendMailContactenos').submit();
+			});
+		</script>
+		<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback" async defer></script>
     </body>
 </html>
