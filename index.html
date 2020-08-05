@@ -270,7 +270,7 @@
                     <h3 class="section-subheading text-white">Necesitas más información o una cotización?</h3>
                 </div>
                 <form id="contactForm" name="sentMessage" novalidate="novalidate">
-                    <div class="row align-items-stretch mb-5">
+                    <div class="row align-items-stretch mb-4">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <input class="form-control" id="name" type="text" placeholder="Nombres *" required="required" data-validation-required-message="Por favor, ingrese sus nombres." />
@@ -292,11 +292,9 @@
                             </div>
                         </div>
                     </div>
-					<div class="text-center pb-3">
-						<div class="g-recaptcha"></div>
-					</div>
                     <div class="text-center">
                         <div id="success"></div>
+                        <div id="g-recaptcha"></div>
                         <button class="btn btn-primary btn-xl text-uppercase" id="sendMessageButton" type="submit">Enviar Mensaje</button>
                     </div>
                 </form>
@@ -427,11 +425,17 @@
 				});
 			};
 			$('button[id="sendMessageButton"]').on('click', function(e){
-				e.preventDefault();
 				if (responseCaptcha == null){
-					apiModal.mensajeModal("Por favor, verifique que no es un robot.","",false); return false;
+                    $("#success").html("<div class='alert alert-danger'>");
+                    $("#success > .alert-danger")
+                        .html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
+                        .append("</button>");
+                    $("#success > .alert-danger").append(
+                        $("<strong>").text("Debe comprobar que no es un robot")
+                    );
+                    $("#success > .alert-danger").append("</div>");
+                    return false;
 				}
-				$('#sendMailContactenos').submit();
 			});
 		</script>
 		<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback" async defer></script>
