@@ -1957,6 +1957,12 @@ pre code {
   .table-responsive-md > .table-bordered {
     border: 0;
   }
+  .portfolio-modal .modal-content h2 {
+    font-size: 2rem!important;
+  }
+  .mt-xs-2{
+    margin-top: 1rem!important;
+  }
 }
 @media (max-width: 991.98px) {
   .table-responsive-lg {
