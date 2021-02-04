@@ -54,10 +54,10 @@
     // Collapse the navbar when page is scrolled
     $(window).scroll(navbarCollapse);
 
-    $.fn.snow({
-        minSize: 10, //Tamaño mínimo del copo de nieve, 10 por defecto
-        maxSize: 20, //Tamaño máximo del copo de nieve, 10 por defecto
-        newOn: 500, //Frecuencia (en milisegundos) con la que aparecen los copos de nieve, 500 por defecto
-        flakeColor: '#FFFFFF' //Color del copo de nieve, #FFFFFF por defecto
-    });
+    // $.fn.snow({
+    //     minSize: 10, //Tamaño mínimo del copo de nieve, 10 por defecto
+    //     maxSize: 20, //Tamaño máximo del copo de nieve, 10 por defecto
+    //     newOn: 500, //Frecuencia (en milisegundos) con la que aparecen los copos de nieve, 500 por defecto
+    //     flakeColor: '#FFFFFF' //Color del copo de nieve, #FFFFFF por defecto
+    // });
 })(jQuery); // End of use strict
